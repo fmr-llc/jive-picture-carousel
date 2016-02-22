@@ -94,7 +94,7 @@ replace the text JQUERY with the Binary URL.  It should end up looking similar t
 * Click "Save Properties".
 * Click "Publish Layout".
 <p>Your Picture Carousel Builder is now set up.</p>
-<p><img src="docs/picture_carousel-builder.jpg" /></p>
+<p><img src="docs/picture-carousel-builder.jpg" /></p>
 <p>Site admins can use the below instructions to create their own Picture Carousels...</p>
 
 Creating a Picture Carousel Setup document
@@ -104,16 +104,16 @@ Creating a Picture Carousel Setup document
 * Name the columns “Title”, “Caption”, “Picture”, and “Link” for clarity.
 * The first column represents the title that will show for the picture.  The second column represents the caption of the picture.  The third column represents the actual picture that will be displayed.  Lastly, the fourth column represents the hyperlink redirected to if the picture is clicked.  Each row you add to the table represents another picture added to the carousel.
 <p>NOTE: The only column that is required to be filled is the third column (containing the picture).  Even if you do not have captions, titles, or links you must still have four columns total.</p>
-<p><img src="docs/picture_carousel-setup-doc.jpg" /></p>
+<p><img src="docs/picture-carousel-setup-doc.jpg" /></p>
 * Once your Picture Carousel setup document is completed, publish the document and copy the URL.
 
 Build the Picture Carousel
 --------------------------
 * Go to the Overview page that you installed the Picture Carousel Builder application.
-  <p><img src="docs/picture_carousel-builder.jpg" /></p>
+  <p><img src="docs/picture-carousel-builder.jpg" /></p>
 * Paste the picture carousel setup document URL you copied in the section above.
 * Click Next and the format screen displays.
-  <p><img src="docs/picture_carousel-format.jpg" /></p>
+  <p><img src="docs/picture-carousel-format.jpg" /></p>
   ** Picture Scroll Speed - Number of seconds to delay between slides.
   ** Image Size
     *** Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.
@@ -122,7 +122,7 @@ Build the Picture Carousel
   ** Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.
   ** Player Height - Sets the height of the player.
 * Click Next to go to the color control.
-  <p><img src="docs/picture_carousel-colors.jpg" /></p>
+  <p><img src="docs/picture-carousel-colors.jpg" /></p>
   You can fine-tune the colors with the color selectors for the following:
   ** Background - Any player area revealed when the picture size is not set to Stretch.
   ** Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.
@@ -136,7 +136,7 @@ Build the Picture Carousel
 * Edit the widget.  Paste the Picture Carousel code.
 * Click on Save Properties.
 * Publish the page.
-<p><img src="docs/picture_carousel.jpg" /></p>
+<p><img src="docs/picture-carousel.jpg" /></p>
 
 Usage
 -----
