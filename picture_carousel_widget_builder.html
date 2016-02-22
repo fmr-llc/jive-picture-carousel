@@ -1,0 +1,194 @@
+<!--
+Jive - Picture Carousel Widget
+
+Copyright (c) 2015 Fidelity Investments
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+FILE DESCRIPTION
+This is the HTML widget code for the Picture Carousel Widget Builder app.
+
+WIDGET DESCRIPTION
+This Jive HTML widget loads in a Jive setup document with four columns in the table.
+The table content is parsed into a Bootstrap slider.  The timing and colors in the UI 
+are configurable via the builder app.
+-->
+<meta name="fidosreg" content="b764a0a9536448345dc227af95e192521d337b5e4c3560c859b89ecd0407004a">
+
+<script src='/api/core/v3/attachments/file/1477080/data'></script>
+<script>
+
+var jquery_content_id = "1477080";
+var library_loader_content_id = "1435000";
+
+var $j = jQuery.noConflict();
+$j("head").append('<scr'+'ipt src="/api/core/v3/attachments/file/' + library_loader_content_id + '/data"></scr'+'ipt>');
+</script>
+<script>
+$j.load_library('bootstrap.css');
+$j.load_library('bootstrap-theme.css');
+$j.load_library('spectrum.css');
+$j.load_library('picture_carousel_builder.css');
+$j.load_library('bootstrap.js');
+$j.load_library('spectrum.js');
+$j.load_library('picture_carousel_builder.js');
+$j.load_library('picture_carousel_widget.js');
+</script>
+
+<div id='mainOuterContainer'>
+
+	<div id='teamTitle' class='page-header'> 
+		<h2>Picture Carousel Widget Builder</h2> 
+	</div>
+
+	<div id='startingDiv' class="col-xs-12">
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+		<div id="search_layout">
+			<p style='color:#2AABD2;'>Please paste the URL of your Picture Carousel Document.</p>
+			<form id="customsearchform" name="customsearchform" onsubmit="return false;">
+				<input id="docURLInput" type="text"  placeholder="Enter Document URL" value=''/>
+				<br/><br/>
+			</form>
+			<br/>
+			<div id='URLStatus' style='color:red;'></div>
+			<button id='nextButton' class='btn btn-info btn-small' onclick='nextFromStart()' disabled>Next</button>
+		</div>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+	</div>
+
+
+	<div id='previewDiv'></div>
+
+	<div id='customizationPageOne' class="col-xs-12">
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+		<div class="col-xs-9">
+			<b>Picture Scroll Speed (Seconds):&nbsp;&nbsp;</b>
+			<input id='pictureScrollSpeed' value='5' maxlength='4' size='4' />
+			<button id='upPictureScrollSpeed' onclick="changeSliderSpeed('up')">↑</button>
+			<button id='downPictureScrollSpeed' onclick="changeSliderSpeed('down')">↓</button>
+		</div>
+
+		<div class="col-xs-9">
+			<br/>
+		</div>
+
+		<div class="col-xs-9">
+			<b>Image Size:&nbsp;&nbsp;</b>
+			<div id="pictureSize" style="display: inline;">
+				<input type="radio" name="pictureSize" style="display: inline;" value="aspect" checked="checked"> Keep Aspect Ratio</input>&nbsp;&nbsp;
+				<input type="radio" name="pictureSize" style="display: inline;" value="stretch"> Stretch</input>&nbsp;&nbsp;
+				<input type="radio" name="pictureSize" style="display: inline;" value="none"> Do Not Resize</input>
+			</div>
+		</div>
+
+		<div class="col-xs-9">
+			<br/>
+		</div>
+
+		<div class="col-xs-9">
+			<b>Column Width (Simulated):&nbsp;&nbsp;</b>
+			<select id='colSize' class='form-control' style="display: inline; width: 20%;">
+				<option value="25%">Narrow</option>
+				<option value="35%">Thin</option>
+				<option value="50%" selected>Half Page</option>
+				<option value="80%">Wide</option>
+				<option value="100%">Full Page</option>
+			</select>
+		</div>
+
+		<div class="col-xs-9">
+			<br/>
+		</div>
+
+		<div class="col-xs-9">
+			<b>Player Height: </b>
+			<input style="display: inline; width: 10%;" type="text" id="pictureHeight" value="300" readonly/>&nbsp;&nbsp;
+			100<input style="display: inline; width: 50%" type="range" min="100" max="800" id="pictureHeight_slider" value="300"/>&nbsp;800
+		</div>
+
+		<div class="col-xs-9">
+			<br/>
+		</div>
+
+		<div class="col-xs-9">
+			<button class='btn btn-info btn-small' id='pageOneBackButton' onclick='startOver()'>Back</button>
+			<button class='btn btn-info btn-small' id='pageOneNextButton' onclick='pageOneNext()'>Next</button>
+		</div>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+	</div>
+
+	<div id='customizationPageTwo' class="col-xs-12">
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+		<div class="col-xs-4">
+			<b>Background: </b><input id='backgroundColor' class="color form-control" style='display:inline;' value="f2f2f2">
+			<br/>
+			<br/>
+			<b>Border: </b><input id='borderColor' class="color form-control" style='display:inline;' value="b8b8b8">
+		</div>
+		<div class="col-xs-4">
+			<b>Caption background: </b><input id='captionBackgroundColor' class="color form-control" style='display:inline;' value="000000">
+			<br/>
+			<br/>
+			<b>Caption text: </b><input id='captionTextColor' class="color form-control" style='display:inline;' value="BBBBBB">
+		</div>
+		<div class="col-xs-4">
+			<b>Navigation icons: </b><input id='navColor' class="color form-control" style='display:inline;' value="F2F2F2">
+			<br/>
+			<br/>
+			<b>Navigation Background: </b><input id='navBackgroundColor' class="color form-control" style='display:inline;' value="bbbbbb">
+		</div>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+		<button class='btn btn-info btn-small' id='pageTwoBackButton' onclick='nextFromStart()'>Back</button>
+		<button class='btn btn-info btn-small' id='pageTwoNextButton' onclick='pageTwoNext()'>Next</button>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+	</div>
+
+	<div id='generatedCodeDiv' class="col-xs-12">
+		<h4> Copy and paste this code into an HTML Widget: </h4>
+		<div id='generatedTextArea'>
+			<textarea id='generatedCodeBox' readonly></textarea>
+		</div>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+		<button class='btn btn-info btn-small' onclick='backFromFinish()'>Back</button>
+		<button class='btn btn-info btn-small' onclick='startOver()'>Start Over</button>
+		<div class="col-xs-12">
+			<br/>
+			<br/>
+		</div>
+	</div>
+
+</div>
+
