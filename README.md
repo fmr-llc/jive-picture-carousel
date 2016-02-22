@@ -104,15 +104,26 @@ Creating a Picture Carousel Setup document
 * Name the columns “Title”, “Caption”, “Picture”, and “Link” for clarity.
 * The first column represents the title that will show for the picture.  The second column represents the caption of the picture.  The third column represents the actual picture that will be displayed.  Lastly, the fourth column represents the hyperlink redirected to if the picture is clicked.  Each row you add to the table represents another picture added to the carousel.
 <p>NOTE: The only column that is required to be filled is the third column (containing the picture).  Even if you do not have captions, titles, or links you must still have four columns total.</p>
+<<<<<<< HEAD
+<p><img src="docs/picture_carousel-setup-doc.jpg" /></p>
+=======
 <p><img src="docs/picture_carousel-widget-setup-doc.jpg" /></p>
+>>>>>>> origin/Release
 * Once your Picture Carousel setup document is completed, publish the document and copy the URL.
 
 Build the Picture Carousel
 --------------------------
 * Go to the Overview page that you installed the Picture Carousel Builder application.
+<<<<<<< HEAD
+  <p><img src="docs/picture_carousel-builder.jpg" /></p>
+* Paste the picture carousel setup document URL you copied in the section above.
+* Click Next and the format screen displays.
+  <p><img src="docs/picture_carousel-format.jpg" /></p>
+=======
 * Paste the picture carousel setup document URL you copied in the section above.
 * Click Next and the format screen displays.
   <p><img src="docs/picture_carousel-widget-format.jpg" /></p>
+>>>>>>> origin/Release
   ** Picture Scroll Speed - Number of seconds to delay between slides.
   ** Image Size
     *** Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.
@@ -121,7 +132,11 @@ Build the Picture Carousel
   ** Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.
   ** Player Height - Sets the height of the player.
 * Click Next to go to the color control.
+<<<<<<< HEAD
+  <p><img src="docs/picture_carousel-colors.jpg" /></p>
+=======
   <p><img src="docs/picture_carousel-widget-colors.jpg" /></p>
+>>>>>>> origin/Release
   You can fine-tune the colors with the color selectors for the following:
   ** Background - Any player area revealed when the picture size is not set to Stretch.
   ** Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.
@@ -165,5 +180,9 @@ If you would like to contribute to this project, please check out [Contributing]
 
 License
 -------
+<<<<<<< HEAD
+<p>(c) 2015-2016 Fidelity Investments</p>
+=======
 (c) 2015-2016 Fidelity Investments
+>>>>>>> origin/Release
 Licensed under the [Apache License](docs/LICENSE), Version 2.0
