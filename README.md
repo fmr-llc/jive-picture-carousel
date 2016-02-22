@@ -120,24 +120,25 @@ Build the Picture Carousel
 * Go to the Overview page that you installed the Picture Carousel Builder application.
   <p><img src="docs/picture-carousel-setup.jpg" /></p>
 * Paste the picture carousel setup document URL you copied in the section above.
-* Click Next and the format screen displays.
+* Click Next and the format screen displays:
+  <p>A simulation of the picture carousel will play at the top and change based on your settings.</p>
   <p><img src="docs/picture-carousel-format.jpg" /></p>
-  <p>Picture Scroll Speed - Number of seconds to delay between slides.</p>
-  <p>Image Size:</p>
-    <p>Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.</p>
-    <p>Stretch - Stretches the pictures to fill in the player.</p>
-    <p>Do Not Resize - Keeps the original picture size.</p>
-  <p>Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.</p>
-  <p>Player Height - Sets the height of the player.</p>
+  <p>- Picture Scroll Speed - Number of seconds to delay between slides.</p>
+  <p>- Image Size:</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;* Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;* Stretch - Stretches the pictures to fill in the player.</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;* Do Not Resize - Keeps the original picture size.</p>
+  <p>- Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.</p>
+  <p>- Player Height - Sets the height of the player.</p>
 * Click Next to go to the color control.
   <p><img src="docs/picture-carousel-colors.jpg" /></p>
   You can fine-tune the colors with the color selectors for the following:
-  <p>Background - Any player area revealed when the picture size is not set to Stretch.</p>
-  <p>Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.</p>
-  <p>Navigation Icons - The control icons for navigation.</p>
-  <p>Navigation Background - Background of the navigation controls.</p>
-  <p>Caption - The text color in the captions.</p>
-  <p>Caption Background - The background of the caption area.</p>
+  <p>- Background - Any player area revealed when the picture size is not set to Stretch.</p>
+  <p>- Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.</p>
+  <p>- Navigation Icons - The control icons for navigation.</p>
+  <p>- Navigation Background - Background of the navigation controls.</p>
+  <p>- Caption - The text color in the captions.</p>
+  <p>- Caption Background - The background of the caption area.</p>
 * Once satisfied with your picture carousel configuration, click Next.  This will generate the code for your Picture Carousel widget and highlight it.  Copy the generated code.
 * Go to the overview page you want to put the Picture Carousel.
 * Drag an HTML Widget into a column.  Make sure to put the widget into a column sufficiently wide to display your Picture Carousel.
@@ -148,7 +149,7 @@ Build the Picture Carousel
 
 Usage
 -----
-<p>Once the Picture Carousel is setup and operational, users can utilize the meu items for navigation.</p>
+<p>Once the Picture Carousel is setup and operational, the carousel will automatically load and start playing for visiotrs.  When a picture is clicked that has a link configured, the page will redirect to that link.  The left and right arrows can be clicked to advance the carousel in either direction.  Additionaly, the navigation circles at the bottom right can be used to go directly to a particular frame.</p>
 <p>If changes are needed, update the setup document and the Picture Carousel will pull in the updates on the next page refresh.</p>
 
 Issues
