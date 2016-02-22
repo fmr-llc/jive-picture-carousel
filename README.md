@@ -14,21 +14,8 @@ Upload Picture Carousel Libraries
 * Navigate to the upload location for your library files.
 * Create an Uploaded File in the Library location of your Jive community.  Drag the file "picture_carousel_widget_builder.css" to the file section of the upload.  Set the file name to "Picture Carousel Widget Builder CSS Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
 * Create another Uploaded File in the Library location of your Jive community.  Drag the file "picture_carousel_widget_builder.js" to the file section of the upload.  Set the file name to "Picture Carousel Widget Builder JavaScript Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
-
-Download Spectrum
------------------
-[Spectrum Color Picker](https://github.com/bgrins/spectrum) is a library that several of these widget projects will use for customizing your preferences.  You will need to check if you have this installed from a previous widget installation.  If not, you need to obtain a copy of this library and store specific files in your Jive instance for use.  Follow these instructions to check for status, and download the latest version and upload to your community if required:
-* Use the Content Lookup widget to search for "Spectrum JavaScript Library".  If the file is returned in the search, you can assume it is already installed, and can skip the rest of this section.  Otherwise, continue with the below steps to download Spectrum and install it in your Jive installation.
-* Click [Spectrum download](https://github.com/bgrins/spectrum/archive/master.zip) to get the latest version or use a version used by your front end developers.
-* (Optional) Perform any required security checks on the downloaded code.
-* Extract the zip file to your computer.
-* Log into your Jive community.
-* Navigate to the upload location for your library files.
-* Create an Uploaded File in the Library location of your Jive community.  Look in the Spectrum archive on your computer.  Expand the dist folder.  Drag the file "spectrum.css" to the file section of the upload.  Set the file name to "Spectrum CSS Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
-* Create another Uploaded File in the Library location of your Jive community.  Go back to the Spectrum archive.  Drag the file "spectrum.js" to the file section of the upload.  Set the file name to "Spectrum JavaScript Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
-
-Update Library Loader
----------------------
+* Create another Uploaded File in the Library location of your Jive community.  Drag the file "picture_carousel_widget.css" to the file section of the upload.  Set the file name to "Picture Carousel Widget CSS Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
+* Create another Uploaded File in the Library location of your Jive community.  Drag the file "picture_carousel_widget.js" to the file section of the upload.  Set the file name to "Picture Carousel Widget JavaScript Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
 * Use the Content Lookup widget to search for "Library Loader".  Click the link to the file in the results.  If it is not found, contact your administrator.
 * Download a copy of the "Library Loader" file from your community.  Open it for editing.
 * Go back to the Content Lookup widget and search for "Picture Carousel Widget".  You should see the two library files you uploaded to your community above.
@@ -42,25 +29,46 @@ Update Library Loader
 ```
 	libraries['picture_carousel_widget_builder.js'] = { contentID: '694226' };
 ```
-* If you installed Spectrum (did not skip the section above), then perform these steps:
-  * Use the Content Lookup widget to search for "Spectrum".  You should see results for the CSS and Javascript libraries uploaded above.
-  * Find the search result for "Spectrum CSS Library" and copy its Content ID.  It should be a number like 694227.
-  * Update the library_loader.js file line for "spectrum.css" and update the content ID variable (it should be 0 before updating) to the Content ID.  If a line for "spectrum.css" is not present in your Library Loader, then just add the line below with the correct Content ID in it.  The result should look similar to:
+* Find the search result for "Picture Carousel Widget CSS Library" and copy its Content ID.  It should be a number like 694227.
+* Update the library_loader.js file line for "picture_carousel_widget.css" and update the content ID variable (it should be 0 before updating) to the Content ID.  The result should look similar to:
+```
+	libraries['picture_carousel_builder.css'] = { contentID: '694227' };
+```
+* Find the search result for "Picture Carousel Widget JavaScript Library" and copy its Content ID.  It should be a number like 694228.
+* Update the library_loader.js file line for "picture_carousel_widget.js" and update the content ID variable (it should be 0 before updating) to the Content ID.  The result should look similar to:
+```
+	libraries['picture_carousel_widget.js'] = { contentID: '694228' };
+```
+* Save the changes to the library_loader.js file on your computer.
+
+Install Spectrum
+----------------
+[Spectrum Color Picker](https://github.com/bgrins/spectrum) is a library that several of these widget projects will use for customizing your preferences.  You will need to check if you have this installed from a previous widget installation.  If not, you need to obtain a copy of this library and store specific files in your Jive instance for use.  Follow these instructions to check for status, and download the latest version and upload to your community if required:
+* Use the Content Lookup widget to search for "Spectrum JavaScript Library".  If the file is returned in the search, you can assume it is already installed, and can skip the rest of this section.  Otherwise, continue with the below steps to download Spectrum and install it in your Jive installation.
+* Click [Spectrum download](https://github.com/bgrins/spectrum/archive/master.zip) to get the latest version or use a version used by your front end developers.
+* (Optional) Perform any required security checks on the downloaded code.
+* Extract the zip file to your computer.
+* Log into your Jive community.
+* Navigate to the upload location for your library files.
+* Create an Uploaded File in the Library location of your Jive community.  Look in the Spectrum archive on your computer.  Expand the dist folder.  Drag the file "spectrum.css" to the file section of the upload.  Set the file name to "Spectrum CSS Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
+* Create another Uploaded File in the Library location of your Jive community.  Go back to the Spectrum archive.  Drag the file "spectrum.js" to the file section of the upload.  Set the file name to "Spectrum JavaScript Library", put a description of your choosing, tag it, set the authors, and make sure it is being published to the correct Library location.  Click Publish.
+* Use the Content Lookup widget to search for "Spectrum".  You should see results for the CSS and Javascript libraries uploaded above.
+* Find the search result for "Spectrum CSS Library" and copy its Content ID.  It should be a number like 694227.
+* Update the library_loader.js file line for "spectrum.css" and update the content ID variable (it should be 0 before updating) to the Content ID.  If a line for "spectrum.css" is not present in your Library Loader, then just add the line below with the correct Content ID in it.  The result should look similar to:
 ```
 	libraries['spectrum.css'] = { contentID: '694227' };
 ```
-  * Find the search result for "Spectrum JavaScript Library" and copy its Content ID.  It should be a number like 694228.
-  * Update the library_loader.js file line for "spectrum.js" and update the content ID variable (it should be 0 before updating) to the Content ID.  The result should look similar to:
+* Find the search result for "Spectrum JavaScript Library" and copy its Content ID.  It should be a number like 694228.
+* Update the library_loader.js file line for "spectrum.js" and update the content ID variable (it should be 0 before updating) to the Content ID.  The result should look similar to:
 ```
 	libraries['spectrum.js'] = { contentID: '694228' };
 ```
 * Save the changes to the library_loader.js file on your computer.
-* Edit the "Library Loader" uploaded file in your Jive community.
-* Drag the updated file from your computer to the file section of the uploaded file.  Click Publish.
-You have now updated the Library Loader in your Jive community with the library files needed to run the Picture Carousel builder and widgets.
 
 Install the Picture Carousel Builder application
 ------------------------------------------------
+* Edit the "Library Loader" uploaded file in your Jive community.
+* Drag the updated library_loader.js file from your computer to the file section of the uploaded file.  Click Publish.
 * Use the Content Lookup widget to search for "jQuery Library".  Copy the Content ID.  It should be a number like "694224"
 * Look in the Picture Carousel archive on your computer and edit the "picture_carousel_widget_builder.html" file.
 * Find the jquery_content_id and replace the zero in the quotes with the Content ID.  The result should look similar to:
@@ -110,26 +118,26 @@ Creating a Picture Carousel Setup document
 Build the Picture Carousel
 --------------------------
 * Go to the Overview page that you installed the Picture Carousel Builder application.
-  <p><img src="docs/picture-carousel-builder.jpg" /></p>
+  <p><img src="docs/picture-carousel-setup.jpg" /></p>
 * Paste the picture carousel setup document URL you copied in the section above.
 * Click Next and the format screen displays.
   <p><img src="docs/picture-carousel-format.jpg" /></p>
-  ** Picture Scroll Speed - Number of seconds to delay between slides.
-  ** Image Size
-    *** Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.
-    *** Stretch - Stretches the pictures to fill in the player.
-    *** Do Not Resize - Keeps the original picture size.
-  ** Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.
-  ** Player Height - Sets the height of the player.
+  <p>Picture Scroll Speed - Number of seconds to delay between slides.</p>
+  <p>Image Size:</p>
+    <p>Keep Aspect Ratio - Sizes the pictures within the player, but always keeps the original aspect ratio of the picture.</p>
+    <p>Stretch - Stretches the pictures to fill in the player.</p>
+    <p>Do Not Resize - Keeps the original picture size.</p>
+  <p>Column Width - This is a simulation of the jive column widths.  This allows you to get a basic visual of the player within the target column width.</p>
+  <p>Player Height - Sets the height of the player.</p>
 * Click Next to go to the color control.
   <p><img src="docs/picture-carousel-colors.jpg" /></p>
   You can fine-tune the colors with the color selectors for the following:
-  ** Background - Any player area revealed when the picture size is not set to Stretch.
-  ** Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.
-  ** Navigation Icons - The control icons for navigation.
-  ** Navigation Background - Background of the navigation controls.
-  ** Caption - The text color in the captions.
-  ** Caption Background - The background of the caption area.
+  <p>Background - Any player area revealed when the picture size is not set to Stretch.</p>
+  <p>Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.</p>
+  <p>Navigation Icons - The control icons for navigation.</p>
+  <p>Navigation Background - Background of the navigation controls.</p>
+  <p>Caption - The text color in the captions.</p>
+  <p>Caption Background - The background of the caption area.</p>
 * Once satisfied with your picture carousel configuration, click Next.  This will generate the code for your Picture Carousel widget and highlight it.  Copy the generated code.
 * Go to the overview page you want to put the Picture Carousel.
 * Drag an HTML Widget into a column.  Make sure to put the widget into a column sufficiently wide to display your Picture Carousel.
