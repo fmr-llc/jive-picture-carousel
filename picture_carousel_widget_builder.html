@@ -62,7 +62,7 @@ $j.load_library('picture_carousel_widget.js');
 				<br/><br/>
 			</form>
 			<br/>
-			<div id='URLStatus' style='color:red;'></div>
+			<div id='URLStatus'></div>
 			<button id='nextButton' class='btn btn-info btn-small' onclick='nextFromStart()' disabled>Next</button>
 		</div>
 		<div class="col-xs-12">
@@ -92,10 +92,10 @@ $j.load_library('picture_carousel_widget.js');
 
 		<div class="col-xs-9">
 			<b>Image Size:&nbsp;&nbsp;</b>
-			<div id="pictureSize" style="display: inline;">
-				<input type="radio" name="pictureSize" style="display: inline;" value="aspect" checked="checked"> Keep Aspect Ratio</input>&nbsp;&nbsp;
-				<input type="radio" name="pictureSize" style="display: inline;" value="stretch"> Stretch</input>&nbsp;&nbsp;
-				<input type="radio" name="pictureSize" style="display: inline;" value="none"> Do Not Resize</input>
+			<div id="pictureSize" class="form-control-inline">
+				<input type="radio" name="pictureSize" class="form-control-inline" value="aspect" checked="checked"> Keep Aspect Ratio</input>&nbsp;&nbsp;
+				<input type="radio" name="pictureSize" class="form-control-inline" value="stretch"> Stretch</input>&nbsp;&nbsp;
+				<input type="radio" name="pictureSize" class="form-control-inline" value="none"> Do Not Resize</input>
 			</div>
 		</div>
 
@@ -105,7 +105,7 @@ $j.load_library('picture_carousel_widget.js');
 
 		<div class="col-xs-9">
 			<b>Column Width (Simulated):&nbsp;&nbsp;</b>
-			<select id='colSize' class='form-control' style="display: inline; width: 20%;">
+			<select id='colSize' class='form-control form-control-inline'>
 				<option value="25%">Narrow</option>
 				<option value="35%">Thin</option>
 				<option value="50%" selected>Half Page</option>
@@ -120,8 +120,8 @@ $j.load_library('picture_carousel_widget.js');
 
 		<div class="col-xs-9">
 			<b>Player Height: </b>
-			<input style="display: inline; width: 10%;" type="text" id="pictureHeight" value="300" readonly/>&nbsp;&nbsp;
-			100<input style="display: inline; width: 50%" type="range" min="100" max="800" id="pictureHeight_slider" value="300"/>&nbsp;800
+			<input type="text" id="pictureHeight" value="300" readonly/>&nbsp;&nbsp;
+			100<input type="range" min="100" max="800" id="pictureHeight_slider" value="300"/>&nbsp;800
 		</div>
 
 		<div class="col-xs-9">
@@ -143,29 +143,31 @@ $j.load_library('picture_carousel_widget.js');
 			<br/>
 			<br/>
 		</div>
-		<div class="col-xs-4">
-			<b>Background: </b><input id='backgroundColor' class="color form-control" style='display:inline;' value="f2f2f2">
+		<div class="col-xs-6 color-select">
+			<b>Background: </b><input id='backgroundColor' class="color form-control form-control-inline" value="f2f2f2">
 			<br/>
 			<br/>
-			<b>Border: </b><input id='borderColor' class="color form-control" style='display:inline;' value="b8b8b8">
+			<b>Border: </b><input id='borderColor' class="color form-control form-control-inline" value="b8b8b8">
 		</div>
-		<div class="col-xs-4">
-			<b>Caption background: </b><input id='captionBackgroundColor' class="color form-control" style='display:inline;' value="000000">
+		<div class="col-xs-6 color-select">
+			<b>Caption background: </b><input id='captionBackgroundColor' class="color form-control form-control-inline" value="000000">
 			<br/>
 			<br/>
-			<b>Caption text: </b><input id='captionTextColor' class="color form-control" style='display:inline;' value="BBBBBB">
+			<b>Caption text: </b><input id='captionTextColor' class="color form-control form-control-inline" value="BBBBBB">
 		</div>
-		<div class="col-xs-4">
-			<b>Navigation icons: </b><input id='navColor' class="color form-control" style='display:inline;' value="F2F2F2">
+		<div class="col-xs-6 color-select">
+			<b>Arrow icons: </b><input id='arrowColor' class="color form-control form-control-inline" value="F2F2F2">
 			<br/>
 			<br/>
-			<b>Navigation Background: </b><input id='navBackgroundColor' class="color form-control" style='display:inline;' value="bbbbbb">
+			<b>Arrow Background: </b><input id='arrowBackgroundColor' class="color form-control form-control-inline" value="bbbbbb">
 		</div>
-		<div class="col-xs-12">
+		<div class="col-xs-6 color-select">
+			<b>Navigation icons: </b><input id='navColor' class="color form-control form-control-inline" value="F2F2F2">
 			<br/>
 			<br/>
+			<b>Navigation Background: </b><input id='navBackgroundColor' class="color form-control form-control-inline" value="bbbbbb">
 		</div>
-		<button class='btn btn-info btn-small' id='pageTwoBackButton' onclick='nextFromStart()'>Back</button>
+		<button class='btn btn-info btn-small' id='pageTwoBackButton' onclick='pageTwoBack()'>Back</button>
 		<button class='btn btn-info btn-small' id='pageTwoNextButton' onclick='pageTwoNext()'>Next</button>
 		<div class="col-xs-12">
 			<br/>

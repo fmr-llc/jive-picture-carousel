@@ -33,6 +33,7 @@ if(IEVersion <= 8) {
 }
 
 var content_area_class = '#jive-body-main div.jive-rendered-content';
+var enabled_slide_debug = false;	//Enables console.log messages in Firefox and disables the Presentation from being produced. Setting this to true, will allow you to see if your content is being pulled in properly. When you are confident your content is pulled in correctly set this to false.  
 
 var insertHtml	= "<div id='mainContainer'>\n"
 				+ "<div id='myCarousel' class='carousel slide' data-interval='" + sliderSpeed + "' data-ride='carousel'>\n"
@@ -53,6 +54,10 @@ function init(){
 		if (typeof console === "undefined" || typeof console.log === "undefined") return false;
 		console.log(msg);
 	}
+	if(enabled_slide_debug) {
+		log('Presentation: Content Page = ' + sourceURL);
+	}
+
 	if(!sourceURL) {
 		return false;
 	}
@@ -78,6 +83,7 @@ function init(){
 		} 
 		
 		loadTableData();
+		reSize();
 	}); //end load
 
 	
@@ -102,8 +108,12 @@ function loadTableData() {
 	var tableRows = $j('#docTable tbody:first > tr');
 	$numRows = tableRows.length;
 
+	if(enabled_slide_debug) {
+		log('Presentation: total number of table rows: ' + $numRows);
+	}
+
 	// Loop over the rows and place them in the accordion.
-	var indicatorsHTML = '';
+	var indicatorHTML = '';
 	var carouselHTML = '';
 	var titleHtml = '';
 	var captionHtml = '';
@@ -112,7 +122,7 @@ function loadTableData() {
 	var picHeight = '';
 	var UrlHtml = '';
 	for(var i=0; i < $numRows; i++){
-		indicatorHTML = '<li data-target="#myCarousel" data-slide-to="' + i + '"';
+		indicatorHTML += '<li data-target="#myCarousel" data-slide-to="' + i + '"';
 		if (i == 0){
 			indicatorHTML += ' class="active"';
 		}
@@ -146,20 +156,22 @@ function loadTableData() {
 	} // end for loop
 	
 	// Append the loop HTML to the resultArea
+	$j('.carousel-indicators').html(indicatorHTML);
 	$j('#innerCarousel').html(carouselHTML);
 	customization();
+	resizeCarousel();
+	reSize();
 } // end loadTableData function
 
 function customization(){
 	$j('#innerCarousel').height(sliderHeight);
-	$j('#myCarousel').attr('data-interval', "" + sliderSpeed);
+	$j('#myCarousel').attr('data-interval', sliderSpeed);
 	$j('.item').css({'background-color' : backgroundColor});
-	$j('#mainContainer').css({'border': "1px solid " + borderColor});
-
+	$j('#mainContainer').css({'border': playerBorder + "px solid " + borderColor});
 	$j('a.carousel-control').css({
-		'color': navColor,
-		'background-color': navBackgroundColor,
-		'border-color': navColor
+		'color': arrowColor,
+		'background-color': arrowBackgroundColor,
+		'border-color': arrowColor
 	});
 	$j('.carousel-indicators li').css({
 		'color': navColor,
@@ -168,25 +180,21 @@ function customization(){
 	});
 	$j('.carousel-title').css({'color': captionTextColor});
 
-	if(isIE == true){
-		$j('.carousel-indicators li:last').css({'margin-left': '4px'});
-	}
-
-	//remove the captions if in a small col
 	if($j('#innerCarousel').width() > 225 ){
 		$j.each($j('.carousel-caption'), function(i,item){
 			if($j(item).text().replace(/\n/g, '').length > 0){
 				$j(item).css({'background-color': captionBackgroundColor,
 							  'border-radius':'5px',
-							  'color': captionTextColor,
-							  'height': "'" + sliderHeight + "px'" });
+							  'color': captionTextColor ,
+							  'height': "'" + sliderHeight + "px'"
+							});
+				$j('.carousel-caption h3').css({'color': captionTextColor});
 			}
 		});
 	}else{
 		$j('.carousel-caption').hide();
 	}
 	$j('.carousel').carousel();
-	resizeCarousel();
 } 
 
 function resizeImage(imageID, containerHeight, containerWidth){
@@ -251,11 +259,14 @@ function resizeCarousel() {
 }
 
 function reSize() {
-	setTimeout(resizeMe,500);
+	setTimeout(resizeMe,250);
 }
 
 $j(document).ready(function() {
 	if (typeof sliderSpeed === 'undefined') {
     	var sliderSpeed = 5000;
+    }
+	if (typeof playerBorder === 'undefined') {
+    	var playerBorder = 0;
     }
 });
