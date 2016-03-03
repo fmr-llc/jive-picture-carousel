@@ -24,17 +24,19 @@ are configurable via the builder app.
 */
 var fidosreg_id = 'b764a0a9536448345dc227af95e192521d337b5e4c3560c859b89ecd0407004a';
 var sourceURL = '';
-var sourceURL = '';
 var URLCheck = '/docs/';
 var pictureSize = 'aspect';
-var sliderHeight = '300px';
+var sliderHeight = '300';
+var playerBorder = '0';
 var sliderSpeed = '5000';
-var backgroundColor = 'f2f2f2';
-var borderColor ='b8b8b8';
-var captionTextColor ='bbbbbb';
-var captionBackgroundColor ='000000';
-var navColor = 'F2F2F2';
-var navBackgroundColor = 'bbbbbb';
+var backgroundColor = '#f2f2f2';
+var borderColor ='#b8b8b8';
+var captionTextColor ='#bbbbbb';
+var captionBackgroundColor ='#000000';
+var arrowColor = '#F2F2F2';
+var arrowBackgroundColor = '#bbbbbb';
+var navColor = '#F2F2F2';
+var navBackgroundColor = '#bbbbbb';
 
 function toggleNextButton() {
 	if($j('#docURLInput').val().length > 0 ) {
@@ -46,7 +48,7 @@ function toggleNextButton() {
 }
 
 function resize(){
-	setTimeout(resizeMe,300);
+	setTimeout(resizeMe,100);
 }
 
 function nextFromStart(){
@@ -64,6 +66,7 @@ function loadPreview(){
 	var content_area_class = '#jive-body-main div.jive-rendered-content';
 	pictureSize = $j('#pictureSize input:radio:checked').val();
 	sliderHeight = parseInt($j('#pictureHeight').val());
+	playerBorder = parseInt($j('#playerBorder').val());
 	$j('#previewDiv').width( $j('#colSize').val() );
 	sourceURL = $j('#docURLInput').val();
 	$j("#previewDiv").empty();
@@ -87,7 +90,6 @@ function loadPreview(){
 
 function pageOneNext(){
 	hide();
-	sliderSpeed = $j('#pictureScrollSpeed').val() * 1000;
 	$j('#customizationPageTwo').show();
 	$j('#previewDiv').show();
 	resize();
@@ -95,6 +97,13 @@ function pageOneNext(){
 
 function pageTwoNext(){
 	finish();
+}
+
+function pageTwoBack(){
+	hide();
+	$j('#customizationPageOne').show();
+	$j('#previewDiv').show();
+	resize();
 }
 
 function backFromFinish(){
@@ -110,46 +119,6 @@ function hide(){
 	$j('#customizationPageTwo').hide();
 	$j('#previewDiv').hide();
 	$j('#generatedCodeDiv').hide();
-}
-
-function changeSliderSpeed(direction){
-	if(direction == 'up'){
-		$j('#pictureScrollSpeed').val(parseInt($j('#pictureScrollSpeed').val()) + 1);
-
-	}else if(direction == 'down' && parseInt($j('#pictureScrollSpeed').val()) > 1){
-		$j('#pictureScrollSpeed').val(parseInt($j('#pictureScrollSpeed').val()) - 1);
-	}
-
-	sliderSpeed = parseInt($j('#pictureScrollSpeed').val()) * 1000;
-	loadPreview();
-	updatePreview();
-}
-
-function updatePreview(){
-	$j('#innerCarousel').height( sliderHeight );
-	$j('#myCarousel').attr('data-interval', "" + sliderSpeed);
-	$j('.item').css({'background-color' : backgroundColor});
-	$j('#mainContainer').css({'border': "1px solid " + borderColor});
-	$j('a.carousel-control').css({
-		'color': navColor,
-		'background-color': navBackgroundColor,
-		'border-color': navColor
-	});
-	$j('.carousel-indicators li').css({
-		'color': navColor,
-		'background-color': navBackgroundColor,
-		'border-color': navColor
-	});
-	$j.each($j('.carousel-caption'), function(i,item){
-		if($j(item).text().replace(/\n/g, '').length > 0){
-			$j(item).css({'background-color': captionBackgroundColor,
-						  'border-radius':'5px',
-						  'color': captionTextColor ,
-						  'height': "'" + sliderHeight + "px'"
-						});
-			$j('.carousel-caption h3').css({'color': captionTextColor});
-		}
-	});
 }
 
 function startOver() {
@@ -182,10 +151,13 @@ function finish(){
 					+ "var sliderSpeed = '" + sliderSpeed + "';\n"
 					+ "var sourceURL='" + sourceURL + "';\n"		
 					+ "var sliderHeight = '" + sliderHeight + "';\n"
+					+ "var playerBorder = '" + playerBorder + "';\n"
 					+ "var backgroundColor = '" + backgroundColor + "';\n"
 					+ "var borderColor ='" + borderColor + "';\n"
 					+ "var captionTextColor ='" + captionTextColor + "';\n"
 					+ "var captionBackgroundColor ='" + captionBackgroundColor + "';\n"
+					+ "var arrowColor = '" + arrowColor + "';\n"
+					+ "var arrowBackgroundColor = '" + arrowBackgroundColor + "';\n"
 					+ "var navColor = '" + navColor + "';\n"
 					+ "var navBackgroundColor = '" + navBackgroundColor + "';\n"
 					+ "$j(function(){\n"
@@ -217,12 +189,9 @@ $j(document).ready(function() {
 	hide();
 	$j('#startingDiv').show();
 
-	/*
-	 *Page One
-	 */
 	$j('#pictureSize').change(function() {
 		loadPreview();
-		updatePreview();
+		customization();
 	});
 
  	$j( "#pictureScrollSpeed" ).change(function() {
@@ -233,13 +202,23 @@ $j(document).ready(function() {
 		}
 		sliderSpeed = $j('#pictureScrollSpeed').val() * 1000;
 		loadPreview();
-		updatePreview();
+		customization();
 	});
 
 	$j( "#colSize" ).change(function() {
 		loadPreview();
-		updatePreview();
+		customization();
 		resize();
+	});
+	
+	$j('#playerSpeed_slider').on("input change", function() {
+		document.getElementById("playerSpeed").value = $j(this).val();
+	});
+
+	$j('#playerSpeed_slider').change(function () {
+		document.getElementById("playerSpeed").value = $j(this).val();
+		sliderSpeed = parseInt($j(this).val()) * 1000;
+		$j( "#colSize" ).change();
 	});
 	
 	$j('#pictureHeight_slider').on("input change", function() {
@@ -250,6 +229,15 @@ $j(document).ready(function() {
 		document.getElementById("pictureHeight").value = $j(this).val();
 		$j( "#colSize" ).change();
 	});
+	
+	$j('#playerBorder_slider').on("input change", function() {
+		document.getElementById("playerBorder").value = $j(this).val();
+	});
+
+	$j('#playerBorder_slider').change(function () {
+		document.getElementById("playerBorder").value = $j(this).val();
+		$j( "#colSize" ).change();
+	});
 
 	$j("#backgroundColor").spectrum({
 		color: backgroundColor,
@@ -257,11 +245,11 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			backgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			backgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		}
 	});
 
@@ -271,11 +259,39 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			borderColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			borderColor = color.toHslString();
-			updatePreview();
+			customization();
+		}
+	});
+
+	$j("#arrowColor").spectrum({
+		color: arrowColor,
+	 	showAlpha: true,
+	 	showInput: true,
+	 	move: function(color) {
+			arrowColor = color.toHslString();
+			customization();
+		},
+	 	hide: function(color) {
+			arrowColor = color.toHslString();
+			customization();
+		}
+	});
+
+	$j("#arrowBackgroundColor").spectrum({
+		color: arrowBackgroundColor,
+	 	showAlpha: true,
+	 	showInput: true,
+	 	move: function(color) {
+			arrowBackgroundColor = color.toHslString();
+			customization();
+		},
+	 	hide: function(color) {
+			arrowBackgroundColor = color.toHslString();
+			customization();
 		}
 	});
 
@@ -285,11 +301,11 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			navColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			navColor = color.toHslString();
-			updatePreview();
+			customization();
 		}
 	});
 
@@ -299,11 +315,11 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			navBackgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			navBackgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		}
 	});
 
@@ -313,11 +329,11 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			captionBackgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			captionBackgroundColor = color.toHslString();
-			updatePreview();
+			customization();
 		}
 	});
 
@@ -327,11 +343,11 @@ $j(document).ready(function() {
 	 	showInput: true,
 	 	move: function(color) {
 			captionTextColor = color.toHslString();
-			updatePreview();
+			customization();
 		},
 	 	hide: function(color) {
 			captionTextColor = color.toHslString();
-			updatePreview();
+			customization();
 		}
 	});
 });

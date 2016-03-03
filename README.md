@@ -1,7 +1,7 @@
 Jive - Picture Carousel Widget
 ==============================
 <p><img src="docs/picture-carousel.jpg" /></p>
-The Picture Carousel widget is a great tool for controlling site navigation, both in and out of your [Jive](https://community.jivesoftware.com/welcome) instance.  This is an HTML widget project that guides users through related sites, helps them navigate through complex business units, and organizes your site topics and eases access in your community.  Creating a Picture Carousel in your site is now as simple as creating a Jive document with a bullet list of your Picture Carousel items.  A builder application takes the setup document and generates the code for you.
+Want to steer community traffic to key campaigns, news items, or intranet sites? The Picture Carousel widget is an easy way to build a slideshow of images with captions on any overview page. The carousel displays in an HTML widget, but is maintained using a single document table to manage carousel content.  A builder application allows you to easily configure your carousel with real-time preview, removing the need for users to touch any code.  Whenever changes are needed, the set-up document just needs to be modified and the coraousel will automatically be updated. 
 
 Prerequisite
 ------------
@@ -132,7 +132,7 @@ Build the Picture Carousel
   <p>- Player Height - Sets the height of the player.</p>
 * Click Next to go to the color control.
   <p><img src="docs/picture-carousel-colors.jpg" /></p>
-  You can fine-tune the colors with the color selectors for the following:
+  You can fine-tune the color and transparency with the color selectors for the following:
   <p>- Background - Any player area revealed when the picture size is not set to Stretch.</p>
   <p>- Border - Border around the carousel.  This can be set to invisible in the color selector if no border is desired.</p>
   <p>- Navigation Icons - The control icons for navigation.</p>
