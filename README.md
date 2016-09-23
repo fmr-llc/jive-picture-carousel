@@ -1,7 +1,7 @@
 Jive - Picture Carousel Widget
 ==============================
 <p><img src="docs/picture-carousel.jpg" /></p>
-Want to steer community traffic to key campaigns, news items, or intranet sites? The Picture Carousel widget is an easy way to build a slideshow of images with captions on any overview page. The carousel displays in an HTML widget, but is maintained using a single document table to manage carousel content.  A builder application allows you to easily configure your carousel with real-time preview, removing the need for users to touch any code.  Whenever changes are needed, the set-up document just needs to be modified and the coraousel will automatically be updated. 
+Want to steer community traffic to key campaigns, news items, or intranet sites? The Picture Carousel widget is an easy way to build a slideshow of images with captions on any overview page. The carousel displays in an HTML widget, but is maintained using a single document table to manage carousel content.  A builder application allows you to easily configure your carousel with real-time preview, removing the need for users to touch any code.  Whenever changes are needed, the set-up document just needs to be modified and the carousel will automatically be updated. 
 
 Prerequisite
 ------------
