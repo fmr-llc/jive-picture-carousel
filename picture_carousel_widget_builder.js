@@ -145,7 +145,7 @@ function finish(){
 					+ "<scr"+"ipt>\n"
 					+ "$j.load_library('bootstrap.css');\n"
 					+ "$j.load_library('bootstrap-theme.css');\n"
-					+ "$j.load_library('picture_carousel_widget.css');\n"
+					+ "$j.load_library('picture_carousel.css');\n"
 					+ "$j.load_library('bootstrap.js');\n"
 					+ "var pictureSize = '" + pictureSize + "';\n"
 					+ "var sliderSpeed = '" + sliderSpeed + "';\n"
@@ -164,7 +164,7 @@ function finish(){
 					+ "$j('#mainContent').html(insertHtml);\n"
 					+ "init();\n"
 					+ "});\n"
-					+ "$j.load_library('picture_carousel_widget.js');\n"
+					+ "$j.load_library('picture_carousel.js');\n"
 					+ "<\/scr"+"ipt>\n"
 					+ "<div id='mainContent'><\/div>"
 					);
